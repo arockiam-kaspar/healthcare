@@ -1,0 +1,23 @@
+{
+  "name": "healthcare",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.17.1",
+    "classnames": "^2.2.5",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-fusioncharts": "^1.0.4",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:4000",
+  "devDependencies": {
+    "fusioncharts": "^3.12.2"
+  }
+}

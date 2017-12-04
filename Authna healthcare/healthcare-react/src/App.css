@@ -1,0 +1,63 @@
+.App {
+    text-align: center;
+}
+.headerWrapper th{
+  position: relative;
+}
+.headerWrapper th span {
+    position: absolute;
+    right: 0;
+    width: 0px;
+    height: 4px;
+    border-top: 10px solid #ccc;
+    border-bottom: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    /*border-bottom: 20px solid #ccc;*/
+    top: 10px;
+    cursor: pointer;
+}
+.headerWrapper th span.descending{
+    border-bottom: 10px solid #ccc;
+    border-top: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+.search{
+  float: right;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.chart-container,.pagination-container{
+    margin: 45px;
+}
+.pagination-container input {
+    font-size: 24px;
+    text-align: center;
+    width: 100px;
+}
+a.round {
+    border-radius: 50%;
+     text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f1f1f1;
+    color: black;
+    margin: 0 20px;
+}

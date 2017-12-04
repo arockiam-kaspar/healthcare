@@ -1,0 +1,41 @@
+{
+    "data": [
+    {
+        "id": 1,
+        "username" : "Clark",
+        "difficulty": "easy",
+        "starttime": "10/11/2017 10::11::56 AM",
+        "endtime": "10/11/2017 01::14::12 PM",
+        "score": 123
+    },
+    {
+        "id": 2,
+        "username" : "Smith",
+        "difficulty": "medium",
+        "starttime": "10/11/2017 10::11::56 AM",
+        "endtime": "10/11/2017 01::14::12 PM",
+        "score": 234
+    },
+    {
+        "id": 3,
+        "username" : "Symonds",
+        "difficulty": "tough",
+        "starttime": "10/11/2017 10::11::56 AM",
+        "endtime": "10/11/2017 01::14::12 PM",
+        "score": 876
+    },{
+        "id": 4,
+        "username" : "Starc",
+        "difficulty": "medium",
+        "starttime": "10/11/2017 10::11::56 AM",
+        "endtime": "10/11/2017 01::14::12 PM",
+        "score": 356
+    },{
+        "id": 4,
+        "username" : "Hazlewood",
+        "difficulty": "easy",
+        "starttime": "10/11/2017 10::11::56 AM",
+        "endtime": "10/11/2017 01::14::12 PM",
+        "score": 234
+    }]
+}
