@@ -17,7 +17,7 @@
     top: 10px;
     cursor: pointer;
 }
-.headerWrapper th span.descending{
+.headerWrapper th span.active{
     border-bottom: 10px solid #ccc;
     border-top: none;
     border-left: 10px solid transparent;
@@ -32,6 +32,9 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+}
+.disabled{
+    cursor: default;
 }
 
 td,

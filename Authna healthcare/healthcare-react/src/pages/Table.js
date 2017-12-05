@@ -11,6 +11,9 @@ export default class Table extends Component {
 		 this.state={
 		 	searchText: '',
 		 	data:[],
+		 	page:1,
+		 	recordsPerPage: 5,
+		 	totalRecords:0,
 		 	ascending:{
 		 		id: true,
 				username: true,
@@ -22,19 +25,50 @@ export default class Table extends Component {
 		 }
 	}
 	componentWillMount(){
-		
-		axios.get("/api/users")
+		this.renderRecords();
+	}
+	renderRecords(){
+		const { page } = this.state;
+		//console.log("page", this.state)
+		axios.get(`/api/users/${page}`)
 		.then((res)=>{
+			const { data,totalRecords } = res.data;
 			this.setState({
-				data: res.data.data
+				 data,totalRecords
 			})
 		})
 		.catch((error)=>{
 			console.log(error);
 		})
 	}
+	onHandlePagination =(e)=>{
+
+		e.preventDefault();
+		const { page, recordsPerPage, totalRecords } = this.state;
+		const currentRecord = e.target.getAttribute('name');
+		if(currentRecord=="prev"){
+			this.setState({
+				page: (Number(page)-1<1) ? 1 : Number(page)-1
+			},()=>{
+				 if(page>1){
+				 	this.renderRecords();
+				 }
+			})
+		}else{
+			const isNextPage = totalRecords - (page*recordsPerPage) > 0 ? (page+1) : page;
+			this.setState({
+				page: isNextPage
+			},()=>{
+				if(totalRecords - (page*recordsPerPage) > 0){
+					this.renderRecords();
+				}
+			})
+		}	
+		
+	}
 	renderTable =()=>{
-		const { data, searchText } = this.state;
+
+		const { data, searchText, page } = this.state;
 
 		const filteredData = data.filter((planet)=>{
 			return planet.username.toLowerCase().indexOf(searchText.toLowerCase())!== -1
@@ -110,7 +144,7 @@ export default class Table extends Component {
 		});
 	}
 	render() {
-		const { searchText, ascending, data } = this.state;
+		const { searchText, ascending, data, page, totalRecords, recordsPerPage } = this.state;
 
 		// Pass fusioncharts as a dependency of charts
 		let chartData = [];
@@ -118,7 +152,7 @@ export default class Table extends Component {
 			let {username, score} = value;
 			chartData[idx]={"label":username,"value":score};
 		});
-		console.log(chartData);
+		//console.log(chartData);
 		charts(FusionCharts);
 		var chartConfigs = {
 		    type: "Column2D",
@@ -155,6 +189,11 @@ export default class Table extends Component {
 				  		{this.renderTable()}
 				  	</tbody>	
 				</table> 
+				<div className="pagination-container">
+					<a href="#" name="prev" className={`round ${page==1? "disabled":""} `} onClick={this.onHandlePagination}>&#8249;</a>
+						<input type="text" value={page} readOnly/>
+					<a href="#" name="next" className={`round ${totalRecords - (page*recordsPerPage) > 0 ? "": "disabled"}`} onClick={this.onHandlePagination}>&#8250;</a>
+				</div>
 				<div className="chart-container">
 				 <ReactFC {...chartConfigs} />
 				</div> 
